@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5a44f94317.js" crossorigin="anonymous"></script>
+
+    <title>Pomodoro</title>
+ 
+<style>
+    *{margin: 0px;}
+
+    body{
+        background-color: black;
+        background-size:cover;
+        background-color: #FADA9D;
+       }
+       header{
+        background-color: #C780FA;
+        height: 100px;
+        color: #FADA9D;
+        text-align: center;
+        font-size: xx-large;
+        margin-left: 267px;
+        margin-right: 267px;
+        border-radius: 20px;
+        margin-top: 40px;
+       }
+    
+       main{
+        position: relative;
+       }
+      .time{
+        width: 700px;
+        height: 500px;
+        border: 5px solid #C780FA;
+        border-radius: 10px;
+        transform:translate(95%,30%);
+      
+      }
+      .time-top{
+        height: 70%;
+        width: 100%;
+        text-align: center;
+        font-size: 240px;
+      }
+      .time-bottom{
+     
+        padding-left: 35%;
+      }
+       #btn {
+        padding: 15px;
+        border-radius: 5px;
+        border-color: #FADA9D;
+        background-color: #C780FA;
+       
+      }
+      .text{
+        display: block;
+        text-align: center;
+        border: 2px solid black;
+        padding: 10px;
+        margin-top: 15px;
+        margin-left: 7px;
+
+      }
+     
+</style>
+
+</head>
+<body>
+  
+    <header>
+        <h1>Pomodoro</h1>
+    </header>
+    
+    <main>
+        <div class="time">
+            <div class="time-top">
+            
+                <label for="" class="minute">00</label>:<label for="" class="second">00</label>
+            </div>
+            <div class="time-bottom">
+             
+              <input type="button" value="Start" id="btn" class="start">
+              <input type="button" value="Stop" id="btn" class="stop">
+              <input type="button" value="Clear"  id="btn" class="clear">
+              <input type="text" name="" class="text" placeholder="Dakika gir:">
+
+
+
+            </div>
+        </div>
+        <!-- <video src="v1.mp4" width="100%" height="850px" autoplay loop muted></video> -->
+    </main>
+ <script>
+
+ 
+   
+   document.querySelector(".start").addEventListener("click", function(){
+
+
+   let min_label = document.querySelector(".minute");
+   let sn_label = document.querySelector(".second");
+   let user_min = document.querySelector(".text");
+   let min=0;
+   let sn=0;
+
+   if(user_min.value==""){
+    let time = setInterval(function(){
+
+    
+sn++;
+ sn_label.innerHTML=sn;
+
+if(sn==60){
+    min++;
+    min_label.innerHTML=min;
+    sn=0;
+  }
+
+},100)
+   }
+   else {
+    // kullanıcının girdiği derğerden geiye sayıcak
+    
+
+   }
+
+  
+
+       
+
+
+  document.querySelector(".stop").addEventListener("click", function(){
+    clearInterval(time);
+  })
+
+  document.querySelector(".clear").addEventListener("click", function(){
+  location.reload();
+  })
+
+
+   })
+
+
+</script>
+</body>
+</html>
