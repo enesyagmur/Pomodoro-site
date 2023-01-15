@@ -33,28 +33,34 @@
        }
       .time{
         width: 700px;
-        height: 500px;
+        height: 600px;
         border: 5px solid #C780FA;
         border-radius: 10px;
         transform:translate(95%,30%);
       
       }
       .time-top{
-        height: 70%;
+        height: 55%;
         width: 100%;
         text-align: center;
         font-size: 240px;
       }
       .time-bottom{
      
-        padding-left: 35%;
+        display: flex;
+        flex-direction: column;
+        
       }
        #btn {
         padding: 15px;
         border-radius: 5px;
         border-color: #FADA9D;
         background-color: #C780FA;
+        
        
+      }
+      #btn:hover{
+        background-color: rgb(129, 18, 129);
       }
       .text{
         display: block;
@@ -63,7 +69,13 @@
         padding: 10px;
         margin-top: 15px;
         margin-left: 7px;
+        border-radius: 10px;
 
+      }
+      .mp3{
+        width: 700px;
+        margin-top: 8px;
+        
       }
      
 </style>
@@ -77,6 +89,7 @@
     
     <main>
         <div class="time">
+          
             <div class="time-top">
             
                 <label for="" class="minute">00</label>:<label for="" class="second">00</label>
@@ -87,12 +100,13 @@
               <input type="button" value="Stop" id="btn" class="stop">
               <input type="button" value="Clear"  id="btn" class="clear">
               <input type="text" name="" class="text" placeholder="Dakika gir:">
+              <audio class="mp3" controls><source src="music.mp3" type=""></audio>
 
-
+             
 
             </div>
         </div>
-        <!-- <video src="v1.mp4" width="100%" height="850px" autoplay loop muted></video> -->
+        <!-- <video src="v1.mp4" width="100%" height="100%" autoplay loop muted></video> -->
     </main>
  <script>
 
@@ -100,7 +114,7 @@
    
    document.querySelector(".start").addEventListener("click", function(){
 
-
+   document.querySelector(".mp3").play(); // pause();
    let min_label = document.querySelector(".minute");
    let sn_label = document.querySelector(".second");
    let user_min = document.querySelector(".text");
@@ -120,10 +134,39 @@ if(sn==60){
     sn=0;
   }
 
-},100)
+},1000)
    }
    else {
-    // kullanıcının girdiği derğerden geiye sayıcak
+    
+    let y = Number(user_min.value);
+    let x = y-1;
+    min_label.innerHTML= x;
+    sn = 60;
+    sn_label.innerHTML=60;
+
+    let time2 = setInterval(function(){
+
+   
+     sn--;
+     sn_label.innerHTML=sn;
+
+     if(sn==00 && x > 0){
+      x--;
+      min_label.innerHTML=x;
+      sn=60;
+      sn_label.innerHTML=sn;
+     }
+     else if(x == 0 && sn == 0){
+      clearInterval(time2);
+     }
+
+      //  for(sn = 59; sn=>00; sn--){
+      //   sn_label.innerHTML=sn;
+      //  }
+         
+    },1000)
+    
+
     
 
    }
@@ -135,6 +178,8 @@ if(sn==60){
 
   document.querySelector(".stop").addEventListener("click", function(){
     clearInterval(time);
+    // clearInterval(time2); // time2 için stop işe yaramıyor
+    document.querySelector(".mp3").pause(); // durdurma da işe yaramadı
   })
 
   document.querySelector(".clear").addEventListener("click", function(){
