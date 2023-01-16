@@ -133,7 +133,12 @@ if(sn==60){
     min_label.innerHTML=min;
     sn=0;
   }
+  document.querySelector(".stop").addEventListener("click", function(){
+    clearInterval(time);
 
+    // clearInterval(time2); // time2 için stop işe yaramıyor
+    document.querySelector(".mp3").pause(); // durdurma da işe yaramadı
+  })
 },1000)
    }
    else {
@@ -158,13 +163,26 @@ if(sn==60){
      }
      else if(x == 0 && sn == 0){
       clearInterval(time2);
+      document.title="Bittttttttttttttttttttttti";
+
+      
+      let red = setInterval(function(){
+        document.querySelector(".time").style.borderColor="red";
+      },100)
+      let purple = setInterval(function(){
+        document.querySelector(".time").style.borderColor="purple";
+      },200)
+      
+      document.querySelector(".mp3").pause();
      }
 
-      //  for(sn = 59; sn=>00; sn--){
-      //   sn_label.innerHTML=sn;
-      //  }
+     document.querySelector(".stop").addEventListener("click", function(){
+    clearInterval(time2);
+    document.querySelector(".mp3").pause(); 
+ 
+  })
          
-    },1000)
+    },100)
     
 
 
@@ -174,11 +192,7 @@ if(sn==60){
   
 
        
-   document.querySelector(".stop").addEventListener("click", function(){
-    clearInterval(time);
-    // clearInterval(time2); // time2 için stop işe yaramıyor
-    // document.querySelector(".mp3").pause(); // durdurma da işe yaramadı
-  })
+
 
  
 
