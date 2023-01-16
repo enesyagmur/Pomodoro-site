@@ -36,7 +36,7 @@
         height: 600px;
         border: 5px solid #C780FA;
         border-radius: 10px;
-        transform:translate(95%,30%);
+        transform:translate(165%,30%);
       
       }
       .time-top{
@@ -60,7 +60,7 @@
        
       }
       #btn:hover{
-        background-color: rgb(129, 18, 129);
+        background-color: rgb(129, 38, 129);
       }
       .text{
         display: block;
@@ -167,20 +167,20 @@ if(sn==60){
     },1000)
     
 
-    
+
 
    }
 
   
 
        
-
-
-  document.querySelector(".stop").addEventListener("click", function(){
+   document.querySelector(".stop").addEventListener("click", function(){
     clearInterval(time);
     // clearInterval(time2); // time2 için stop işe yaramıyor
-    document.querySelector(".mp3").pause(); // durdurma da işe yaramadı
+    // document.querySelector(".mp3").pause(); // durdurma da işe yaramadı
   })
+
+ 
 
   document.querySelector(".clear").addEventListener("click", function(){
   location.reload();
